@@ -1,0 +1,211 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Lists Of Things</title>
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="/">Contacts
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container main-content">
+
+    <div class="row">
+
+        <div class="col-md-8" ng-controller="ngRepeatCtrl">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-inline well well-sm">
+                        <span class="glyphicon glyphicon-search"></span>
+
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   ng-model="search"
+                                   placeholder="Search..."
+                            />
+                        </div>
+
+                        <span class="glyphicon glyphicon-sort-by-attributes"></span>
+
+                        <div class="form-group">
+                            <select class="form-control"
+                                    ng-model="order">
+                                <option value="name">Name (ASC)</option>
+                                <option value="-name">Name (DEC)</option>
+                                <option value="email">Email (ASC)</option>
+                                <option value="-email">Email (DEC)</option>
+                                <option value="address">Address (ASC)</option>
+                                <option value="-address">Address (DEC)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary pull-right" ng-click="showCreateModal()">Create</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table-bordered table"
+                           infinite-scroll="loadMore()"
+                           infinite-scroll-distance="1">
+                        <tr>
+                            <th>#</th>
+                            <th>Name
+                                <span ng-click="order = 'name'" class="glyphicon glyphicon-menu-up"></span>
+                                <span ng-click="order = '-name'" class="glyphicon glyphicon-menu-down"></span>
+                            </th>
+                            <th>Email
+                                <span ng-click="order = 'email'" class="glyphicon glyphicon-menu-up"></span>
+                                <span ng-click="order = '-email'" class="glyphicon glyphicon-menu-down"></span>
+                            </th>
+                            <!--<th>Дата рождения</th>-->
+                            <th>Phone number
+                                <span ng-click="order = 'address'" class="glyphicon glyphicon-menu-up"></span>
+                                <span ng-click="order = '-address'" class="glyphicon glyphicon-menu-down"></span>
+                            </th>
+                        </tr>
+
+                        <tr ng-repeat="person in contacts.persons"
+                            ng-style="{
+						'background-color' : person.email == contacts.selectedPerson.email ? 'lightgray' : '',
+						'cursor' : 'pointer'
+                        }"
+                            ng-click="contacts.selectedPerson = person">
+                            <td>{{ $index+1 }}</td>
+                            <td>
+                                <img ng-src="{{person.photo || 'img/noimage.png'}}"
+                                     class="img-circle photo">
+
+                                {{person.name}}
+                            </td>
+                            <td>{{person.email}}</td>
+                            <!--<td>{{person.birthdate | date:"longDate"}}</td>-->
+                            <td>{{person.phonenumber}}</td>
+                        </tr>
+
+                    </table>
+
+                    <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
+                        <div class="alert alert-info">
+                            <p class="text-center">
+                                No results found for search term '{{ search }}'
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="spinner"
+                         ng-show="contacts.isLoading">
+                        <span us-spinner="{radius:6, width:2, length: 8}"></span>
+                        <p>Loading...</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-md-4" ng-controller="detailCtrl">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Details
+                    <button class="btn btn-danger btn-sm pull-right"
+                            ladda="contacts.isRemoving"
+                            ng-click="remove()">Delete
+                    </button>
+                    <div class="clearifx"></div>
+                    <br>
+                </div>
+                <div class="panel-body">
+
+                    <!--<dl>-->
+                        <!--<dt>Photo:</dt>-->
+                        <!--<dd><img class="photo"-->
+                                 <!--ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}"-->
+                                 <!--alt="Image"></dd>-->
+                        <!--<dt>Name:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.name || 'Peter'"></span></dd>-->
+                        <!--<dt>Email:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.email || 'Burk'"></span></dd>-->
+                        <!--<dt>Birthday:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.birthdate | date: 'shortDate'  || '10/02/2016'"></span></dd>-->
+                        <!--<dt>Phone number:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.phonenumber  || '091-124-14-14'"></span></dd>-->
+                        <!--<dt>Address:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.address || 'UK, London, Green Street, 1, apt. 23'"></span></dd>-->
+                        <!--<dt>City:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.city  || 'London'"></span></dd>-->
+                        <!--<dt>Country:</dt>-->
+                        <!--<dd><span ng-bind="contacts.selectedPerson.country  || 'United Kingdom'"></span></dd>-->
+                    <!--</dl>-->
+
+                    <form class="form-horizontal"
+                          ng-submit="save()"
+                          novalidate >
+                        <ng-include src="'templates/form.html'"></ng-include>
+                    </form>
+
+
+                </div>
+            </div>
+
+			<!--<pre>-->
+				<!--1 - сделать чтобы Details либо были дефолтные поля до того как сделали нажатие на какую-либо строку либо их вовсе не было.-->
+			<!--</pre>-->
+			<!--<pre>-->
+				<!--2 - если нажать не на таблицу, то исчезнуть должно выделение-->
+			<!--</pre>-->
+			<!--<pre>-->
+				<!--3 - как работает добавление элементов, надо научить систему добавлять, удалять и редактировать поля.-->
+			<!--</pre>-->
+            <!--<pre>-->
+				<!--4 - чтобы блок Details полз вниз когда проскролили на низ страницы к примеру-->
+			<!--</pre>-->
+            <!--<pre>-->
+                <!--5 - сделать так чтобы система основываясь на данных о рождении показывала возраст человека.-->
+            <!--</pre>-->
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="libs/angular/angular.js"></script>
+<script src="libs/angular-aria/angular-aria.js"></script>
+<script src="libs/angular-resource/angular-resource.min.js"></script>
+<script src="libs/spin.js/spin.min.js"></script>
+<script src="libs/ladda/dist/ladda.min.js"></script>
+<script src="libs/angular-ladda/dist/angular-ladda.min.js"></script>
+<script src="libs/angular-spinner/angular-spinner.min.js"></script>
+<script src="libs/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+<script src="libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+<script src="libs/angular-strap/dist/angular-strap.min.js"></script>
+<script src="libs/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="main.js"></script>
+<!--<script src="controllers/main-controller.js"></script>-->
+<!--<script src="controllers/detail-controller.js"></script>-->
+<!--<script src="resourses/contact-resource.js"></script>-->
+</body>
+</html>
