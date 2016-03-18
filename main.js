@@ -8,11 +8,15 @@ var myApp = angular.module('myApp', [
 ]);
 
 // Config
-myApp.config(function ($httpProvider, $resourceProvider, laddaProvider) {
+myApp.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider) {
 	$httpProvider.defaults.headers.common['Authorization'] = 'Token 84a2b969af0566a0d678bffe3e5463690d8d2af0';
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 	laddaProvider.setOption({
 		style: 'expand-right'
+	});
+	angular.extend($datepickerProvider.defaults, {
+		dateFormat: 'dd/MM/yyyy',
+		autoclose: true
 	});
 });
 
