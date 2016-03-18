@@ -4,7 +4,10 @@ var myApp = angular.module('myApp', [
 		'angularSpinner',
 		'angular-ladda',
 		'jcs-autoValidate',
-		'mgcrea.ngStrap'
+		'mgcrea.ngStrap',
+		'toaster',
+		'ngAnimate'
+
 ]);
 
 // Config
@@ -25,7 +28,9 @@ myApp.controller('detailCtrl', function($scope, contactService){
 
 	$scope.save = function() {
 		$scope.contacts.updateContact($scope.contacts.selectedPerson);
+
 	};
+
 	$scope.remove = function() {
 		$scope.contacts.removeContact($scope.contacts.selectedPerson);
 	};
@@ -36,7 +41,6 @@ myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
 	$scope.order = '-name';
 	$scope.contacts = contactService;
 	$scope.loadMore = function() {
-		console.log('Loading more data.');
 		$scope.contacts.loadMore();
 	};
 
@@ -103,7 +107,7 @@ myApp.directive('checkImage', function($http){
 });
 
 // Service
-myApp.service('contactService', function (Contact, $q) {
+myApp.service('contactService', function (Contact, $q, toaster) {
 	var self = {
 		'addPerson' : function (person) {
 			this.persons.push();
@@ -140,7 +144,6 @@ myApp.service('contactService', function (Contact, $q) {
 					'ordering' : self.ordering
 				};
 				Contact.get(params, function(data){
-					//console.log(data);
 					angular.forEach(data.results, function(person) {
 						self.persons.push(new Contact(person));
 					});
@@ -162,6 +165,7 @@ myApp.service('contactService', function (Contact, $q) {
 			self.isSaving = true;
 			person.$update().then(function() {
 				self.isSaving = false;
+				toaster.pop('success', 'Updated ' + person.name);
 			});
 		},
 		'removeContact' : function(person) {
@@ -171,8 +175,8 @@ myApp.service('contactService', function (Contact, $q) {
 				var index = self.persons.indexOf(person);
 				self.persons.splice(index, 1);
 				self.selectedPerson = null;
+				toaster.pop('success', 'Contact ' + person.name + ' removed.');
 			});
-			//console.log("some delete action.");
 		},
 		'addContact' : function(person) {
 			var d = $q.defer();
@@ -183,6 +187,7 @@ myApp.service('contactService', function (Contact, $q) {
 				self.hasMore = true;
 				self.page = 1;
 				self.persons = [];
+				toaster.pop('success', 'Contact ' + person.name + ' added.');
 				self.loadContacts();
 				d.resolve();
 			});
