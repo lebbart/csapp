@@ -6,7 +6,9 @@
     <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
     <link href="libs/AngularJS-Toaster/toaster.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/paper.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +31,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <form class="form-inline well well-sm">
-                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="fa fa-search"></span>
 
                         <div class="form-group">
                             <input type="text"
@@ -40,7 +42,7 @@
                             />
                         </div>
 
-                        <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                        <span class="fa fa-sort-amount-asc"></span>
 
                         <div class="form-group">
                             <select class="form-control"
@@ -67,19 +69,25 @@
                            infinite-scroll="loadMore()"
                            infinite-scroll-distance="1">
                         <tr>
-                            <th>#</th>
+                            <th class="col-1">#</th>
                             <th>Name
-                                <span ng-click="order = 'name'" class="glyphicon glyphicon-menu-up"></span>
-                                <span ng-click="order = '-name'" class="glyphicon glyphicon-menu-down"></span>
+                                <div class="sortables">
+                                    <span ng-click="order = 'name'" class="fa fa-sort-desc"></span>
+                                    <span ng-click="order = '-name'" class="fa fa-sort-asc"></span>
+                                </div>
                             </th>
-                            <th>Email
-                                <span ng-click="order = 'email'" class="glyphicon glyphicon-menu-up"></span>
-                                <span ng-click="order = '-email'" class="glyphicon glyphicon-menu-down"></span>
+                            <th class="col-2">Email
+                                <div class="sortables">
+                                    <span ng-click="order = 'email'" class="fa fa-sort-desc"></span>
+                                    <span ng-click="order = '-email'" class="fa fa-sort-asc"></span>
+                                </div>
                             </th>
                             <!--<th>Дата рождения</th>-->
-                            <th>Phone number
-                                <span ng-click="order = 'address'" class="glyphicon glyphicon-menu-up"></span>
-                                <span ng-click="order = '-address'" class="glyphicon glyphicon-menu-down"></span>
+                            <th class="col-3">Phone number
+                                <div class="sortables">
+                                    <span ng-click="order = 'address'" class="fa fa-sort-desc"></span>
+                                    <span ng-click="order = '-address'" class="fa fa-sort-asc"></span>
+                                </div>
                             </th>
                         </tr>
 
@@ -134,6 +142,7 @@
                 <div class="panel-heading">Details
                     <button class="btn btn-danger btn-sm pull-right"
                             ladda="contacts.isRemoving"
+                            ng-disabled=""
                             ng-click="remove()">Delete
                     </button>
                     <div class="clearifx"></div>
@@ -186,6 +195,9 @@
 			<!--</pre>-->
             <!--<pre>-->
                 <!--5 - сделать так чтобы система основываясь на данных о рождении показывала возраст человека.-->
+            <!--</pre>-->
+            <!--<pre>-->
+                <!--6 - кнопка delete не активная пока пользователь не выбрал user из списка-->
             <!--</pre>-->
 
         </div>

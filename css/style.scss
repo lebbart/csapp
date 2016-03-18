@@ -1,0 +1,130 @@
+body {
+  padding-top: 50px;
+}
+.main-content {
+  padding: 40px 15px;
+}
+
+.photo {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.spinner {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.spinner p {
+  margin-top: 20px;
+}
+
+.navbar-inverse {
+  background-color: #16C1FA;
+  border-color: #16C1D2;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #16C1FA;
+  border-color: #16C1D2;
+}
+
+/*
+ * Datepicker element
+ */
+
+.datepicker.dropdown-menu {
+  width: 250px;
+  height: 270px;
+  button {
+    outline: none;
+    border: 0px;
+  }
+  tbody {
+    height: 180px;
+  }
+  tbody button {
+    padding: 6px;
+  }
+  &.datepicker-mode-1, &.datepicker-mode-2 {
+    tbody button {
+      height: 65px;
+    }
+  }
+}
+
+/*
+ * Modal element animation
+ */
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.sortables {
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 20px;
+  height: 22px;
+  vertical-align: middle;
+  span:first-child {
+    position: absolute;
+    top: 0;
+  }
+  span:last-child {
+    position: absolute;
+    bottom: 0;
+  }
+  span {
+    color: lightgray;
+    font-size: 24px;
+  }
+  span:hover {
+    cursor: pointer;
+    color: #002a80;
+  }
+}
+
+.table {
+  .col-1 {
+    width: 10%;
+  }
+  .col-2 {
+    width: 30%;
+  }
+  .col-3 {
+    width: 30%;
+  }
+  .col-4 {
+    width: 30%;
+  }
+  tr {
+    td {
+      vertical-align: middle;
+    }
+  }
+}
