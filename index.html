@@ -16,7 +16,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand"
-               href="/">Contacts
+               href="/">Contacts by Lebedenko Bogdan
             </a>
         </div>
     </div>
@@ -142,8 +142,13 @@
                 <div class="panel-heading">Details
                     <button class="btn btn-danger btn-sm pull-right"
                             ladda="contacts.isRemoving"
-                            ng-disabled=""
+                            ng-disabled="contacts.selectedPerson == null"
                             ng-click="remove()">Delete
+                    </button>
+                    <button class="btn btn-warning btn-sm pull-right margin-10"
+                            ladda="contacts.isRemoving"
+                            ng-disabled="contacts.selectedPerson == null"
+                            ng-click="showUpdateModal()">Edit
                     </button>
                     <div class="clearifx"></div>
                     <br>
@@ -171,33 +176,117 @@
                         <!--<dd><span ng-bind="contacts.selectedPerson.country  || 'United Kingdom'"></span></dd>-->
                     <!--</dl>-->
 
-                    <form class="form-horizontal"
-                          ng-submit="save()"
-                          novalidate >
-                        <ng-include src="'templates/form.html'"></ng-include>
-                    </form>
+                    <!--<form class="form-horizontal"-->
+                          <!--ng-submit="save()"-->
+                          <!--novalidate >-->
+                        <!--<ng-include src="'templates/form.html'"></ng-include>-->
+                    <!--</form>-->
 
 
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <img class="photo-large" ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}" alt="Image">
+                    </div>
                 </div>
-            </div>
 
-			<!--<pre>-->
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Age:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{(presentYear | date:'yyyy') - (contacts.selectedPerson.birthdate  | date:'yyyy')}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Name:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.name}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Email:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.email}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Bd:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.birthdate | date:'medium'}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Sex:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.sex}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Phone:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.phonenumber}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Addr-s:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.address}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">City:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.city}}
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-12">
+                       <label class="com-sm-2 control-label">Country:</label>
+                       <div class="col-sm-10 pull-right">
+                           {{contacts.selectedPerson.country}}
+                       </div>
+                   </div>
+               </div>
+
+   </div>
+</div>
+
+<!--<pre>-->
 				<!--1 - сделать чтобы Details либо были дефолтные поля до того как сделали нажатие на какую-либо строку либо их вовсе не было.-->
 			<!--</pre>-->
 			<!--<pre>-->
 				<!--2 - если нажать не на таблицу, то исчезнуть должно выделение-->
 			<!--</pre>-->
-			<!--<pre>-->
-				<!--3 - как работает добавление элементов, надо научить систему добавлять, удалять и редактировать поля.-->
+            <!--<pre>-->
+				<!--3 - чтобы блок Details полз вниз когда проскролили на низ страницы к примеру-->
 			<!--</pre>-->
             <!--<pre>-->
-				<!--4 - чтобы блок Details полз вниз когда проскролили на низ страницы к примеру-->
-			<!--</pre>-->
-            <!--<pre>-->
-                <!--5 - сделать так чтобы система основываясь на данных о рождении показывала возраст человека.-->
+                <!--4 - открывать при двойном клике модальное окно с полными данными о пользователе-->
             <!--</pre>-->
             <!--<pre>-->
-                <!--6 - кнопка delete не активная пока пользователь не выбрал user из списка-->
+                <!--5 - сделать возможность редактирования при нажатии на кнопку "edit contact"-->
             <!--</pre>-->
 
         </div>

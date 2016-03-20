@@ -23,7 +23,7 @@ myApp.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepic
 	});
 });
 
-myApp.controller('detailCtrl', function($scope, contactService){
+myApp.controller('detailCtrl', function($scope, $modal, contactService){
 	$scope.contacts = contactService;
 
 	$scope.save = function() {
@@ -31,9 +31,19 @@ myApp.controller('detailCtrl', function($scope, contactService){
 
 	};
 
+	$scope.showUpdateModal = function() {
+		$scope.updateModal = $modal({
+			scope: $scope,
+			template: 'templates/modal.update.tpl.html',
+			show: true
+		});
+	};
+
 	$scope.remove = function() {
 		$scope.contacts.removeContact($scope.contacts.selectedPerson);
 	};
+
+	$scope.presentYear = new Date();
 });
 
 myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
@@ -166,6 +176,7 @@ myApp.service('contactService', function (Contact, $q, toaster) {
 			person.$update().then(function() {
 				self.isSaving = false;
 				toaster.pop('success', 'Updated ' + person.name);
+				$scope.createModal.hide();
 			});
 		},
 		'removeContact' : function(person) {

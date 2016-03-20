@@ -11,6 +11,13 @@ body {
   -moz-border-radius: 50%;
   border-radius: 50%; }
 
+.photo-large {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+
 .spinner {
   position: relative;
   width: 50px;
@@ -93,5 +100,8 @@ body {
   width: 30%; }
 .table tr td {
   vertical-align: middle; }
+
+.margin-10 {
+  margin-right: 10px; }
 
 /*# sourceMappingURL=style.css.map */
