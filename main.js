@@ -54,15 +54,6 @@ myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
 		$scope.contacts.loadMore();
 	};
 
-	//$scope.sensitiveSearch = function(person) {
-	//	if($scope.search) {
-	//		return person.name.indexOf($scope.search) == 0 ||
-	//			   person.email.indexOf($scope.search) == 0 ||
-	//			   person.address.indexOf($scope.search) == 0;
-	//	}
-	//	return true;
-	//};
-
 	$scope.showCreateModal = function() {
 		$scope.contacts.selectedPerson = {};
 		$scope.createModal = $modal({

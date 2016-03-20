@@ -82,7 +82,7 @@
                                     <span ng-click="order = '-email'" class="fa fa-sort-asc"></span>
                                 </div>
                             </th>
-                            <!--<th>Дата рождения</th>-->
+
                             <th class="col-3">Phone number
                                 <div class="sortables">
                                     <span ng-click="order = 'address'" class="fa fa-sort-desc"></span>
@@ -105,7 +105,7 @@
                                 {{person.name}}
                             </td>
                             <td>{{person.email}}</td>
-                            <!--<td>{{person.birthdate | date:"longDate"}}</td>-->
+
                             <td>{{person.phonenumber}}</td>
                         </tr>
 
@@ -155,139 +155,103 @@
                 </div>
                 <div class="panel-body">
 
-                    <!--<dl>-->
-                        <!--<dt>Photo:</dt>-->
-                        <!--<dd><img class="photo"-->
-                                 <!--ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}"-->
-                                 <!--alt="Image"></dd>-->
-                        <!--<dt>Name:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.name || 'Peter'"></span></dd>-->
-                        <!--<dt>Email:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.email || 'Burk'"></span></dd>-->
-                        <!--<dt>Birthday:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.birthdate | date: 'shortDate'  || '10/02/2016'"></span></dd>-->
-                        <!--<dt>Phone number:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.phonenumber  || '091-124-14-14'"></span></dd>-->
-                        <!--<dt>Address:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.address || 'UK, London, Green Street, 1, apt. 23'"></span></dd>-->
-                        <!--<dt>City:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.city  || 'London'"></span></dd>-->
-                        <!--<dt>Country:</dt>-->
-                        <!--<dd><span ng-bind="contacts.selectedPerson.country  || 'United Kingdom'"></span></dd>-->
-                    <!--</dl>-->
-
-                    <!--<form class="form-horizontal"-->
-                          <!--ng-submit="save()"-->
-                          <!--novalidate >-->
-                        <!--<ng-include src="'templates/form.html'"></ng-include>-->
-                    <!--</form>-->
-
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <img class="photo-large" ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}" alt="Image">
+                <div ng-hide="contacts.selectedPerson">
+                    <h5>
+                        Choose contact to see details.
+                    </h5>
+                </div>
+                <div class="show-after-choose" ng-hide="!contacts.selectedPerson">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <img class="photo-large" ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}" alt="Image">
+                        </div>
                     </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Age:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{(presentYear | date:'yyyy') - (contacts.selectedPerson.birthdate  | date:'yyyy')}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Name:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.name}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Email:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.email}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Bd:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.birthdate | date:'medium'}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Sex:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.sex}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Phone:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.phonenumber}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Addr-s:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.address}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">City:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.city}}
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-sm-12">
+                           <label class="com-sm-2 control-label">Country:</label>
+                           <div class="col-sm-10 pull-right">
+                               {{contacts.selectedPerson.country}}
+                           </div>
+                       </div>
+                   </div>
                 </div>
 
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Age:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{(presentYear | date:'yyyy') - (contacts.selectedPerson.birthdate  | date:'yyyy')}}
-                       </div>
-                   </div>
-               </div>
+           </div>
+        </div>
 
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Name:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.name}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Email:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.email}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Bd:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.birthdate | date:'medium'}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Sex:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.sex}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Phone:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.phonenumber}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Addr-s:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.address}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">City:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.city}}
-                       </div>
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <div class="col-sm-12">
-                       <label class="com-sm-2 control-label">Country:</label>
-                       <div class="col-sm-10 pull-right">
-                           {{contacts.selectedPerson.country}}
-                       </div>
-                   </div>
-               </div>
-
-   </div>
-</div>
-
-<!--<pre>-->
-				<!--1 - сделать чтобы Details либо были дефолтные поля до того как сделали нажатие на какую-либо строку либо их вовсе не было.-->
-			<!--</pre>-->
-			<!--<pre>-->
-				<!--2 - если нажать не на таблицу, то исчезнуть должно выделение-->
-			<!--</pre>-->
-            <!--<pre>-->
-				<!--3 - чтобы блок Details полз вниз когда проскролили на низ страницы к примеру-->
-			<!--</pre>-->
-            <!--<pre>-->
-                <!--4 - открывать при двойном клике модальное окно с полными данными о пользователе-->
-            <!--</pre>-->
-            <!--<pre>-->
-                <!--5 - сделать возможность редактирования при нажатии на кнопку "edit contact"-->
-            <!--</pre>-->
 
         </div>
 
@@ -310,8 +274,6 @@
 <script src="libs/angular-strap/dist/angular-strap.min.js"></script>
 <script src="libs/angular-strap/dist/angular-strap.tpl.min.js"></script>
 <script src="main.js"></script>
-<!--<script src="controllers/main-controller.js"></script>-->
-<!--<script src="controllers/detail-controller.js"></script>-->
-<!--<script src="resourses/contact-resource.js"></script>-->
+
 </body>
 </html>
