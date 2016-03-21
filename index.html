@@ -99,7 +99,7 @@
                             ng-click="contacts.selectedPerson = person">
                             <td>{{ $index+1 }}</td>
                             <td>
-                                <img ng-src="{{person.photo || 'img/noimage.png'}}"
+                                <img ng-src="{{person.photo | defaultImage:'/img/noimage.png'}}"
                                      class="img-circle photo">
 
                                 {{person.name}}

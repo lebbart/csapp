@@ -91,19 +91,12 @@ myApp.factory("Contact", function ($resource) {
 	});
 });
 
-myApp.directive('checkImage', function($http){
-	return {
-		restrict: A,
-		link: function(scope, element, attrs) {
-			attr.$observe('ngSrc', function(){
-				$http.get(ngSrc).success(function(){
-					alert('Image exist!');
-				}).error(function(){
-					alert('Something goes wrong and no image found.');
-					element.attr('src', '/img/noimage.png');
-				});
-			})
+myApp.filter('defaultImage', function(){
+	return function (input, param) {
+		if(!input) {
+			return '/img/noimage.png'
 		}
+		return input;
 	}
 });
 
