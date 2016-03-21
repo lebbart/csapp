@@ -11,6 +11,16 @@ var myApp = angular.module('myApp', [
 
 ]);
 
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+	$stateProvider
+			.state('list', {
+				url: "/",
+				templateUrl: "templates/list.html"
+			});
+
+	$urlRouterProvider.otherwise("/");
+});
+
 // Config
 myApp.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider) {
 	$httpProvider.defaults.headers.common['Authorization'] = 'Token 84a2b969af0566a0d678bffe3e5463690d8d2af0';
