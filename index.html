@@ -99,7 +99,7 @@
                             ng-click="contacts.selectedPerson = person">
                             <td>{{ $index+1 }}</td>
                             <td>
-                                <img ng-src="{{person.photo | defaultImage:'/img/noimage.png'}}"
+                                <img ng-src="{{person.photo | defaultImage:'../img/noimage.png'}}"
                                      class="img-circle photo">
 
                                 {{person.name}}
@@ -146,7 +146,6 @@
                             ng-click="remove()">Delete
                     </button>
                     <button class="btn btn-warning btn-sm pull-right margin-10"
-                            ladda="contacts.isRemoving"
                             ng-disabled="contacts.selectedPerson == null"
                             ng-click="showUpdateModal()">Edit
                     </button>
@@ -163,7 +162,7 @@
                 <div class="show-after-choose" ng-hide="!contacts.selectedPerson">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <img class="photo-large" ng-src="{{contacts.selectedPerson.photo || 'img/noimage.png'}}" alt="Image">
+                            <img class="photo-large" ng-src="{{contacts.selectedPerson.photo | defaultImage:'../img/noimage.png'}}" alt="Image">
                         </div>
                     </div>
 

@@ -94,7 +94,7 @@ myApp.factory("Contact", function ($resource) {
 myApp.filter('defaultImage', function(){
 	return function (input, param) {
 		if(!input) {
-			return '/img/noimage.png'
+			return '../img/noimage.png'
 		}
 		return input;
 	}
