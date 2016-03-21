@@ -1,5 +1,6 @@
 var myApp = angular.module('myApp', [
 		'ngResource',
+		'ui.router',
 		'infinite-scroll',
 		'angularSpinner',
 		'angular-ladda',

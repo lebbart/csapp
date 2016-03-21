@@ -99,7 +99,7 @@
                             ng-click="contacts.selectedPerson = person">
                             <td>{{ $index+1 }}</td>
                             <td>
-                                <img ng-src="{{person.photo | defaultImage:'../img/noimage.png'}}"
+                                <img ng-src="{{person.photo | defaultImage:'./img/noimage.png'}}"
                                      class="img-circle photo">
 
                                 {{person.name}}
@@ -162,7 +162,7 @@
                 <div class="show-after-choose" ng-hide="!contacts.selectedPerson">
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <img class="photo-large" ng-src="{{contacts.selectedPerson.photo | defaultImage:'../img/noimage.png'}}" alt="Image">
+                            <img class="photo-large" ng-src="{{contacts.selectedPerson.photo | defaultImage:'./img/noimage.png'}}" alt="Image">
                         </div>
                     </div>
 
@@ -260,6 +260,7 @@
 </div>
 
 <script src="libs/angular/angular.js"></script>
+<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="libs/angular-animate/angular-animate.min.js"></script>
 <script src="libs/AngularJS-Toaster/toaster.min.js"></script>
 <script src="libs/angular-aria/angular-aria.js"></script>
