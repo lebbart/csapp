@@ -15,7 +15,18 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider
 			.state('list', {
 				url: "/",
-				templateUrl: "templates/list.html"
+				templateUrl: "templates/list.html",
+				controller: "ngRepeatCtrl"
+			})
+			.state('details', {
+				url: "/details/:email",
+				templateUrl: "templates/details.html",
+				controller: 'detailCtrl'
+			})
+			.state('create', {
+				url: "/create/",
+				templateUrl: "templates/create.html",
+				controller: 'ngRepeatCtrl'
 			});
 
 	$urlRouterProvider.otherwise("/");
@@ -34,12 +45,12 @@ myApp.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepic
 	});
 });
 
-myApp.controller('detailCtrl', function($scope, $modal, contactService){
+myApp.controller('detailCtrl', function($scope, $stateParams, $modal, contactService){
+	console.log($stateParams);
 	$scope.contacts = contactService;
-
+	$scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
 	$scope.save = function() {
 		$scope.contacts.updateContact($scope.contacts.selectedPerson);
-
 	};
 
 	$scope.showUpdateModal = function() {
@@ -61,6 +72,7 @@ myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
 	$scope.search = '';
 	$scope.order = '-name';
 	$scope.contacts = contactService;
+
 	$scope.loadMore = function() {
 		$scope.contacts.loadMore();
 	};
@@ -114,8 +126,14 @@ myApp.filter('defaultImage', function(){
 // Service
 myApp.service('contactService', function (Contact, $q, toaster) {
 	var self = {
-		'addPerson' : function (person) {
-			this.persons.push();
+		'getPerson': function(email) {
+			console.log(email);
+			for (var i = 0; i < self.persons.length; i++) {
+				var obj = self.persons[i];
+				if (obj.email == email){
+					return obj;
+				}
+			}
 		},
 		'page': 1,
 		'hasMore': true,
