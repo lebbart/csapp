@@ -29,16 +29,4 @@ myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
                 $scope.createModal.hide();
         });
     };
-
-    $scope.$watch('search', function(newVal, oldVal) {
-        if (angular.isDefined(newVal)) {
-            $scope.contacts.doSearch(newVal);
-        }
-    });
-
-    $scope.$watch('order', function(newVal, oldVal) {
-        if (angular.isDefined(newVal)) {
-            $scope.contacts.doOrder(newVal);
-        }
-    });
 });
