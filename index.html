@@ -23,11 +23,10 @@
 </nav>
 
 <div class="container main-content">
+    <toaster-container></toaster-container>
 
     <div class="row">
-
         <div ui-view></div>
-
     </div>
 
 </div>
@@ -46,7 +45,10 @@
 <script src="libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 <script src="libs/angular-strap/dist/angular-strap.min.js"></script>
 <script src="libs/angular-strap/dist/angular-strap.tpl.min.js"></script>
-<script src="main.js"></script>
+<script src="app.js"></script>
+<script src="controllers/detail-controller.js"></script>
+<script src="controllers/repeat-controller.js"></script>
+<script src="services/contacts-service.js"></script>
 
 </body>
 </html>

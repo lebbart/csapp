@@ -52,21 +52,21 @@ body {
  */
 
 .datepicker.dropdown-menu {
-  width: 250px;
-  height: 270px;
+  width: 250px !important;
+  height: 270px !important;
   button {
-    outline: none;
-    border: 0px;
+    outline: none !important;
+    border: 0px !important;
   }
   tbody {
-    height: 180px;
+    height: 180px !important;
   }
   tbody button {
-    padding: 6px;
+    padding: 6px !important;
   }
   &.datepicker-mode-1, &.datepicker-mode-2 {
     tbody button {
-      height: 65px;
+      height: 65px !important;
     }
   }
 }
