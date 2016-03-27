@@ -40,9 +40,22 @@
 </div>
 
 <footer ng-controller="footerController">
-    <div class="row">
-        <div class="col-lg-12">
-            Contact list application - {{presentYear | date:"yyyy"}} | by Lebedenko Bogdan | All Rights Reserved (c)
+    <div class="container">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="text">
+                    Contact list application - {{presentYear | date:"yyyy"}} | by Lebedenko Bogdan | All Rights Reserved (c)
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 pull-right">
+            <div class="row">
+                <ul class="social-list">
+                    <li><a href="{{socialLinks.github}}" target="_blank"><i class="fa fa-github"></i></a></li>
+                    <li><a href="{{socialLinks.fb}}" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="{{socialLinks.vk}}" target="_blank"><i class="fa fa-vk"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </footer>

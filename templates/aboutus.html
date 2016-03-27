@@ -1,0 +1,128 @@
+<div class="col-md-8 col-md-offset-2">
+    <toaster-container></toaster-container>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Details
+            <button class="btn btn-danger btn-sm pull-right"
+                    ladda="contacts.isRemoving"
+                    ng-disabled="contacts.selectedPerson == null"
+                    ng-click="remove()">Delete
+            </button>
+            <button class="btn btn-warning btn-sm pull-right margin-10"
+                    ng-disabled="contacts.selectedPerson == null"
+                    ng-click="showUpdateModal()">Edit
+            </button>
+            <div class="clearifx"></div>
+            <br>
+        </div>
+        <div class="panel-body">
+
+            <div ng-hide="contacts.selectedPerson">
+                <h5>
+                    Choose contact to see details.
+                </h5>
+            </div>
+            <div class="show-after-choose" ng-hide="!contacts.selectedPerson">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <img class="photo-large"
+                             ng-src="{{contacts.selectedPerson.photo | defaultImage:'img/noimage.png'}}"
+                             alt="Image">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Age:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{(presentYear | date:'yyyy') - (contacts.selectedPerson.birthdate | date:'yyyy')}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Name:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Email:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.email}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Bd:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.birthdate | date:'medium'}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Sex:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.sex}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Phone:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.phonenumber}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Addr-s:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.address}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">City:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.city}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label class="com-sm-2 control-label">Country:</label>
+
+                        <div class="col-sm-10 pull-right">
+                            {{contacts.selectedPerson.country}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

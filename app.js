@@ -8,7 +8,6 @@ var myApp = angular.module('myApp', [
 		'mgcrea.ngStrap',
 		'toaster',
 		'ngAnimate'
-
 ]);
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
@@ -27,6 +26,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 				url: "/create/",
 				templateUrl: "templates/create.html",
 				controller: 'ngRepeatCtrl'
+			})
+			.state('about',{
+				url: "/about/",
+				templateUrl: "templates/aboutus.html",
+				controller: 'aboutUsController'
+			})
+			.state('contacts', {
+				url: "/contacts/",
+				templateUrl: "templates/contacts.html",
+				controller: 'contactUsController'
 			});
 
 	$urlRouterProvider.otherwise("/");
@@ -53,7 +62,7 @@ myApp.factory("Contact", function ($resource) {
 	});
 });
 
-myApp.filter('defaultImage', function(){
+myApp.filter('defaultImage', function() {
 	return function (input, param) {
 		if(!input) {
 			return '../img/noimage.png'

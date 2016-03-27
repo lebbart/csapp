@@ -1,3 +1,6 @@
+$mainColor: #2196f3;
+$other: #0B61A4;
+
 body {
   padding-top: 50px;
 }
@@ -139,4 +142,36 @@ body {
 
 .margin-10 {
   margin-right: 10px;
+}
+
+/*
+ * Footer styles
+ */
+
+footer {
+  background: $mainColor;
+  color: #fff;
+
+  .text {
+    line-height: 65px;
+  }
+
+  a {
+    color: #fff;
+    font-size: 25px;
+  }
+
+  .social-list {
+    display: inline-block;
+    list-style-type: none;
+    padding-left: 0;
+    float: right;
+    padding-bottom: 0;
+    padding-top: 10px;
+
+    li {
+      float: left;
+      margin-right: 15px;
+    }
+  }
 }

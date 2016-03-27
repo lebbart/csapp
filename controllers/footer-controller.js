@@ -6,6 +6,13 @@
  *
  */
 
-myApp.controller('footerController', function($scope){
+myApp.controller('footerController', function($scope, $window){
+
+    $scope.socialLinks = {
+        'fb' : 'http://www.fb.com/bogdanlebedenko',
+        'vk' : 'http://www.vk.com/bogdan.lebedenko',
+        'github' : 'http://www.github.com/lebbart'
+    };
+
     $scope.presentYear = new Date();
 });

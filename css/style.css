@@ -104,4 +104,26 @@ body {
 .margin-10 {
   margin-right: 10px; }
 
+/*
+ * Footer styles
+ */
+footer {
+  background: #2196f3;
+  color: #fff; }
+  footer .text {
+    line-height: 65px; }
+  footer a {
+    color: #fff;
+    font-size: 25px; }
+  footer .social-list {
+    display: inline-block;
+    list-style-type: none;
+    padding-left: 0;
+    float: right;
+    padding-bottom: 0;
+    padding-top: 10px; }
+    footer .social-list li {
+      float: left;
+      margin-right: 15px; }
+
 /*# sourceMappingURL=style.css.map */
