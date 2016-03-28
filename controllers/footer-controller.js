@@ -6,7 +6,7 @@
  *
  */
 
-myApp.controller('footerController', function($scope, $window){
+myApp.controller('footerController', function($scope){
 
     $scope.socialLinks = {
         'fb' : 'http://www.fb.com/bogdanlebedenko',

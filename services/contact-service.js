@@ -100,7 +100,7 @@ myApp.service('contactService', function (Contact, $rootScope, $q, toaster) {
         },
         'watchFilters': function() {
             $rootScope.$watch(function() {
-                return self.search;
+            return self.search;
             }, function(newVal) {
                 if(angular.isDefined(newVal)) {
                     self.doSearch();

@@ -16,17 +16,13 @@
 
         <div class="form-group">
             <select class="form-control"
-                    ng-model="contacts.order">
+                    ng-model="contacts.ordering">
                 <option value="name">Name (ASC)</option>
                 <option value="-name">Name (DEC)</option>
                 <option value="email">Email (ASC)</option>
                 <option value="-email">Email (DEC)</option>
-                <option value="address">Address (ASC)</option>
-                <option value="-address">Address (DEC)</option>
             </select>
         </div>
-
-        <button class="btn btn-primary pull-right" ng-click="showCreateModal()">Create</button>
 
     </form>
 

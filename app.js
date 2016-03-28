@@ -25,16 +25,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 			.state('create', {
 				url: "/create/",
 				templateUrl: "templates/create.html",
-				controller: 'ngRepeatCtrl'
+				controller: 'PersonCreateController'
 			})
 			.state('about',{
 				url: "/about/",
-				templateUrl: "templates/aboutus.html",
+				templateUrl: "templates/general.html",
 				controller: 'aboutUsController'
 			})
 			.state('contacts', {
 				url: "/contacts/",
-				templateUrl: "templates/contacts.html",
+				templateUrl: "templates/general.html",
 				controller: 'contactUsController'
 			});
 
