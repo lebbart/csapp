@@ -29,12 +29,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 			})
 			.state('about',{
 				url: "/about/",
-				templateUrl: "templates/general.html",
+				templateUrl: "templates/about.html",
 				controller: 'aboutUsController'
 			})
 			.state('contacts', {
 				url: "/contacts/",
-				templateUrl: "templates/general.html",
+				templateUrl: "templates/contacts.html",
 				controller: 'contactUsController'
 			});
 
