@@ -8,6 +8,10 @@
 
 myApp.controller('contactUsController', function($scope) {
 
-
+    $scope.contacts = {
+        email: 'bogdan.lebedenko@gmail.com',
+        phone: '+38 093 26 76 494',
+        skype: 'bogdan.lebedenko'
+    }
 
 });

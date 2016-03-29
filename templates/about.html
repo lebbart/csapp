@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <span class="img-thumbnail">
+                    <img alt=""
+                         height="300"
+                         class="img-responsive"
+                         src="img/thumbnail.jpg"/>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+            <h2 class="mb-none">{{author.name}} <strong>{{author.surname}}</strong></h2>
+            <h4 class="heading-primary">{{author.position}}</h4>
+
+            <hr class="solid">
+
+            <p>
+                Hi all.<br/>
+                I'm front-end developer and this project is to learn how AngularJS works. It is really interesting and I
+                want to continue this learning while I will be doing my next project for my personal page using AngularJS.
+            </p>
+            <p>
+                If you want to contact me, just go to Contact page and write me directly.
+            </p>
+            <p>
+                So, have a nice day. Best regards to you all.
+            </p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Skills:</h4>
+            <hr>
+        </div>
+    </div>
+    <div class="row mt-xlg">
+
+        <div    class="col-md-2"
+                ng-repeat="skill in skills">
+            <strong>{{skill.name}} - </strong>
+            <label><span class="percent">{{skill.percent}}</span>%</label>
+        </div>
+
+    </div>
+</div>
