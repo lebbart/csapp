@@ -14,18 +14,34 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider
 			.state('list', {
 				url: "/",
-				templateUrl: "templates/list.html",
-				controller: "ngRepeatCtrl"
+				views: {
+					'main' : {
+						templateUrl: "templates/list.html",
+						controller: "ngRepeatCtrl"
+					},
+					'search' : {
+						templateUrl: "templates/searchform.html",
+						controller: "ngRepeatCtrl"
+					}
+				}
 			})
 			.state('details', {
 				url: "/details/:email",
-				templateUrl: "templates/details.html",
-				controller: 'detailCtrl'
+				views: {
+					'main': {
+						templateUrl: "templates/details.html",
+						controller: 'detailCtrl'
+					}
+				}
 			})
 			.state('create', {
 				url: "/create/",
-				templateUrl: "templates/create.html",
-				controller: 'PersonCreateController'
+				views: {
+					'main': {
+						templateUrl: "templates/create.html",
+						controller: 'PersonCreateController'
+					}
+				}
 			})
 			.state('about',{
 				url: "/about/",

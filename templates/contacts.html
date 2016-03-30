@@ -1,13 +1,14 @@
 <div class="col-lg-6">
     <div class="well bs-component">
-        <form class="form-horizontal">
+        <form class="form-horizontal"
+                name="userForm">
             <fieldset>
                 <legend>Contact me</legend>
                 <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label">Name</label>
 
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        <input type="text" ng-model="name" class="form-control" id="inputName" placeholder="Name">
                     </div>
                 </div>
 
@@ -15,7 +16,7 @@
                     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
 
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="text" ng-model="email" class="form-control" id="inputEmail" placeholder="Email">
                     </div>
                 </div>
 
@@ -23,7 +24,7 @@
                     <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 
                     <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
+                        <textarea ng-model='message' class="form-control" rows="3" id="textArea"></textarea>
                         <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                     </div>
                 </div>
@@ -51,11 +52,17 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <button type="submit"
                                 class="btn btn-primary"
-                                ladda="isSending">
+                                ladda="isSending"
+                                ng-click="formsubmit(userForm.$valid)"
+                                ng-disabled="userForm.$invalid">
                             Sent
                         </button>
                     </div>
                 </div>
+
+                <!--<pre ng-model="result">-->
+                    <!--{{result}}-->
+                <!--</pre>-->
 
             </fieldset>
         </form>
