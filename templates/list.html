@@ -3,50 +3,62 @@
     <div class="row">
         <div class="col-md-12">
 
-            <table class="table-bordered table"
-                   infinite-scroll="loadMore()"
-                   infinite-scroll-distance="1">
-                <tr>
-                    <th class="col-1">#</th>
-                    <th>Name
-                        <div class="sortables">
-                            <span ng-click="order = 'name'" class="fa fa-sort-desc"></span>
-                            <span ng-click="order = '-name'" class="fa fa-sort-asc"></span>
-                        </div>
-                    </th>
-                    <th class="col-2">Email
-                        <div class="sortables">
-                            <span ng-click="order = 'email'" class="fa fa-sort-desc"></span>
-                            <span ng-click="order = '-email'" class="fa fa-sort-asc"></span>
-                        </div>
-                    </th>
+            <div class="row"
+                 infinite-scroll="loadMore()"
+                 infinite-scroll-immediate-check="false"
+                 infinite-scroll-distance="1">
+            </div>
 
-                    <th class="col-3">Phone number
-                        <div class="sortables">
-                            <span ng-click="order = 'address'" class="fa fa-sort-desc"></span>
-                            <span ng-click="order = '-address'" class="fa fa-sort-asc"></span>
-                        </div>
-                    </th>
-                </tr>
+            <cc-card ng-repeat="person in contacts.persons"
+                     user="person"
+                     delete-user="parentDeleteUser">
+            </cc-card>
 
-                <tr ng-repeat="person in contacts.persons"
-                    ng-style="{
-						'background-color' : person.email == contacts.selectedPerson.email ? 'lightgray' : '',
-						'cursor' : 'pointer'
-                        }"
-                    ui-sref="details({email:person.email})">
-                    <td>{{ $index+1 }}</td>
-                    <td>
-                        <img ng-src="{{person.photo | defaultImage:'img/noimage.png'}}"
-                             class="img-circle photo">
-                        {{person.name}}
-                    </td>
-                    <td>{{person.email}}</td>
+            <!--<table class="table-bordered table"-->
+                   <!--infinite-scroll="loadMore()"-->
+                   <!--infinite-scroll-immediate-check="false"-->
+                   <!--infinite-scroll-distance="1">-->
+                <!--<tr>-->
+                    <!--<th class="col-1">#</th>-->
+                    <!--<th>Name-->
+                        <!--<div class="sortables">-->
+                            <!--<span ng-click="order = 'name'" class="fa fa-sort-desc"></span>-->
+                            <!--<span ng-click="order = '-name'" class="fa fa-sort-asc"></span>-->
+                        <!--</div>-->
+                    <!--</th>-->
+                    <!--<th class="col-2">Email-->
+                        <!--<div class="sortables">-->
+                            <!--<span ng-click="order = 'email'" class="fa fa-sort-desc"></span>-->
+                            <!--<span ng-click="order = '-email'" class="fa fa-sort-asc"></span>-->
+                        <!--</div>-->
+                    <!--</th>-->
 
-                    <td>{{person.phonenumber}}</td>
-                </tr>
+                    <!--<th class="col-3">Phone number-->
+                        <!--<div class="sortables">-->
+                            <!--<span ng-click="order = 'address'" class="fa fa-sort-desc"></span>-->
+                            <!--<span ng-click="order = '-address'" class="fa fa-sort-asc"></span>-->
+                        <!--</div>-->
+                    <!--</th>-->
+                <!--</tr>-->
 
-            </table>
+                <!--<tr ng-repeat="person in contacts.persons"-->
+                    <!--ng-style="{-->
+						<!--'background-color' : person.email == contacts.selectedPerson.email ? 'lightgray' : '',-->
+						<!--'cursor' : 'pointer'-->
+                        <!--}"-->
+                    <!--ui-sref="details({email:person.email})">-->
+                    <!--<td>{{ $index+1 }}</td>-->
+                    <!--<td>-->
+                        <!--<img ng-src="{{person.photo | defaultImage:'img/noimage.png'}}"-->
+                             <!--class="img-circle photo">-->
+                        <!--{{person.name}}-->
+                    <!--</td>-->
+                    <!--<td>{{person.email}}</td>-->
+
+                    <!--<td>{{person.phonenumber}}</td>-->
+                <!--</tr>-->
+
+            <!--</table>-->
 
             <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
                 <div class="alert alert-info">
@@ -56,12 +68,13 @@
                 </div>
             </div>
 
-            <div class="spinner"
-                 ng-show="contacts.isLoading">
-                <span us-spinner="{radius:6, width:2, length: 8}"></span>
+            <cc-spinner is-loading="contacts.isLoading" message="Mooing"></cc-spinner>
 
-                <p>Loading...</p>
-            </div>
+            <!--<cc-spinner is-loading="contacts">-->
+                <!--<span>Mooing...</span>-->
+            <!--</cc-spinner>-->
+
+            <!--<ng-include src="'templates/spinner.html'"></ng-include>-->
 
         </div>
     </div>
