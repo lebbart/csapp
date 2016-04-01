@@ -45,13 +45,21 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 			})
 			.state('about',{
 				url: "/about/",
-				templateUrl: "templates/about.html",
-				controller: 'aboutUsController'
+				views: {
+					'main' : {
+						templateUrl: "templates/about.html",
+						controller: 'aboutUsController'
+					}
+				}
 			})
 			.state('contacts', {
 				url: "/contacts/",
-				templateUrl: "templates/contacts.html",
-				controller: 'contactUsController'
+				views: {
+					'main': {
+						templateUrl: "templates/contacts.html",
+						controller: 'contactUsController'
+					}
+				}
 			});
 
 	$urlRouterProvider.otherwise("/");

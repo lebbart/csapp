@@ -15,9 +15,9 @@ myApp.controller('ngRepeatCtrl', function($scope, $modal, contactService){
         $scope.contacts.loadMore();
     };
 
-    $scope.parentDeleteUser = function(user) {
-        $scope.contacts.removeContact(user);
-    };
+    //$scope.parentDeleteUser = function(user) {
+    //    $scope.contacts.removeContact(user);
+    //};
 
     //$scope.showCreateModal = function() {
     //    $scope.contacts.selectedPerson = {};

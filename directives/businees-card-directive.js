@@ -12,8 +12,18 @@ myApp.directive('ccCard', function(){
         'restrict': 'AE',
         'templateUrl': 'templates/business-card.html',
         'scope' : {
-            'user' : '=',
-            'deleteUser' : '&'
+            'user' : '='
+        },
+        'controller': function($scope, contactService) {
+
+            $scope.isDeleting = false;
+            $scope.deleteUser = function () {
+                $scope.isDeleting = true;
+                contactService.removeContact($scope.user).then(function(){
+                    $scope.isDeleting = false;
+                });
+            };
+
         }
     }
 
